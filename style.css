@@ -1,4 +1,11 @@
-﻿:root{
+/*
+Theme Name: AMAR Institucional
+Description: Tema institucional leve da Clínica Multidisciplinar Espaço Terapêutico AMAR.
+Version: 1.0.0
+Text Domain: amar-institucional
+*/
+
+:root{
   --blue:#2f7fd6; --blue-d:#1f63ae; --blue-l:#e6f1fc;
   --green:#4aa83a; --green-d:#378a2a; --green-l:#e9f6e5;
   --yellow:#f5b724; --yellow-d:#c98d00; --yellow-l:#fff4d6;
@@ -20,6 +27,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:100}
 .skip:focus{left:8px}
+.screen-reader-text{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
 
 /* Botões */
@@ -207,14 +215,14 @@ a.contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .foot .copy{font-size:.8rem}
 
 /* WhatsApp flutuante: faixa verde com atalho circular, sem outros canais. */
-.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:0;color:#fff;font-weight:800;filter:drop-shadow(0 10px 20px rgba(22,138,68,.28));transition:transform .2s}
+.wa-float{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:0;color:#fff;font-weight:800;filter:drop-shadow(0 10px 20px rgba(22,138,68,.28));transition:transform .2s}
 .wa-float-label{display:flex;align-items:center;min-height:48px;margin-right:-12px;padding:0 30px 0 22px;border-radius:999px;background:#25c746;font-size:.82rem;letter-spacing:.005em;white-space:nowrap}
 .wa-float-icon{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border:4px solid #fff;border-radius:50%;background:var(--wa);box-shadow:0 6px 14px rgba(12,105,52,.24)}
 .wa-float-icon .ic{width:34px;height:34px;stroke-width:2.1}
 .wa-float:hover{transform:translateY(-3px)}
 .wa-float:hover .wa-float-label{background:#1db83e}
 .wa-float:hover .wa-float-icon{background:var(--wa-d)}
-.wa-float-icon:after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(31,168,85,.45);animation:pulse 2.6s infinite;pointer-events:none}
+.wa-float-icon:after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:none;pointer-events:none}
 @keyframes pulse{70%,100%{box-shadow:0 0 0 18px rgba(31,168,85,0)}}
 
 /* Animações progressivas: o conteúdo permanece legível sem JavaScript. */
@@ -228,12 +236,12 @@ a.contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
   .cards{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:1120px){
-  .burger{display:flex;margin-left:auto}
-  .header-cta{display:none}
-  .menu{position:fixed;top:122px;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;padding:14px 20px 22px;background:#fffdf9;border-bottom:1px solid var(--line);box-shadow:0 20px 30px rgba(29,50,72,.1);transform:translateY(-12px);opacity:0;visibility:hidden;transition:.22s;margin:0}
-  .menu.open{transform:none;opacity:1;visibility:visible}
-  .menu a:not(.btn){padding:13px 14px;font-size:1rem}
-  .menu-cta{display:inline-flex;margin-top:8px}
+  .js .burger{display:flex;margin-left:auto}
+  .js .header-cta{display:none}
+  .js .menu{position:fixed;top:122px;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;padding:14px 20px 22px;background:#fffdf9;border-bottom:1px solid var(--line);box-shadow:0 20px 30px rgba(29,50,72,.1);transform:translateY(-12px);opacity:0;visibility:hidden;transition:.22s;margin:0}
+  .js .menu.open{transform:none;opacity:1;visibility:visible}
+  .js .menu a:not(.btn){padding:13px 14px;font-size:1rem}
+  .js .menu-cta{display:inline-flex;margin-top:8px}
 }
 @media(max-width:960px){
   .hero-grid,.about,.how,.contact-grid,.unimed,.info-grid{grid-template-columns:1fr}
@@ -270,7 +278,7 @@ a.contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
   .trust li:last-child{border:0}
   .actions .btn{width:100%}
   .info-card{padding:26px 22px}
-  .wa-float{right:14px;bottom:14px}
+  .wa-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
   .wa-float-label{min-height:44px;padding:0 24px 0 17px;font-size:.72rem}
   .wa-float-icon{width:56px;height:56px;border-width:3px}
   .wa-float-icon .ic{width:30px;height:30px}
@@ -284,3 +292,19 @@ a.contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 
 
 @media(max-width:480px){.nav{height:104px}.brand img{height:90px}.menu{top:104px}}
+
+/* Reputação Google: dados reais só aparecem após confirmação administrativa. */
+.amar-reviews{position:relative;overflow:hidden}
+.reviews-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:stretch}
+.reviews-copy{background:#fff;border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:var(--shadow-s);color:var(--muted);font-size:1.03rem}
+.reviews-copy p{margin-bottom:15px;font-size:1.02rem;line-height:1.75}.reviews-callout{font-weight:800!important;letter-spacing:.08em;color:var(--blue);font-size:.82rem!important}.reviews-helper{font-size:.95rem!important;margin-top:1rem}.reviews-copy .btn{margin-top:12px}.btn-google{background:#fff;color:#2868bf;border-color:#bfd8ef;box-shadow:0 8px 20px rgba(47,127,214,.13)}.btn-google:hover{background:#f4f8ff}.footer-review{max-width:22rem}.footer-review a{color:var(--yellow);font-weight:800;text-decoration:underline;text-underline-offset:3px}.contact-review-box{border-radius:28px;background:linear-gradient(135deg,var(--blue),#23577c);color:#fff;padding:clamp(1.5rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:2rem}.contact-review-box h2{font-size:clamp(1.8rem,4vw,3rem);max-width:20ch}.contact-review-box p{max-width:55ch;line-height:1.7}.contact-review-box .eyebrow,.contact-review-box .reviews-callout{color:var(--yellow)}.contact-review-box .btn-google{background:#fff;color:var(--blue)}
+@media(max-width:720px){.contact-review-box{align-items:flex-start;flex-direction:column}.footer-review{margin-inline:auto}.reviews-layout{grid-template-columns:1fr}}
+.reviews-panel{display:grid;place-items:center;min-height:220px;padding:30px;border-radius:28px;background:linear-gradient(145deg,#2f7fd6,#5da9ed);color:#fff;box-shadow:var(--shadow)}
+.rating-summary{display:flex;align-items:center;gap:22px}.rating-summary>strong{font-size:4.5rem;line-height:1;font-weight:900}.rating-summary p{font-weight:800;margin-top:6px}.review-stars{display:flex;gap:4px;color:var(--yellow);font-size:1.25rem}.review-stars .ic{stroke:currentColor}.review-stars .is-filled{fill:currentColor}.review-stars .is-empty{fill:none;opacity:.48}.reviews-note{max-width:270px;text-align:center;font-weight:800;line-height:1.5}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}.testimonial{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow-s)}.testimonial blockquote{margin:16px 0;color:var(--muted);font-size:.95rem}.testimonial cite{font-style:normal;font-weight:900}
+.google-float{position:fixed;z-index:59;right:20px;bottom:calc(100px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:9px;padding:8px 14px 8px 8px;border-radius:999px;background:#fff;color:#315c99;border:1px solid #c9dcf0;box-shadow:0 8px 18px rgba(29,50,72,.14);font-size:.75rem;font-weight:800;transition:transform .2s}.google-float:hover{transform:translateY(-3px)}.google-float strong,.google-float small{display:block;line-height:1.25}.google-float small{font-weight:700;color:var(--muted)}.google-float-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#f9c94b;color:#855c00}.google-float-icon .ic{fill:currentColor;stroke:currentColor}
+@media(max-width:960px){.reviews-layout{grid-template-columns:1fr}.reviews-panel{min-height:170px}.testimonial-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.reviews-copy{padding:25px 21px}.rating-summary>strong{font-size:3.6rem}.testimonial-grid{grid-template-columns:1fr}.google-float{right:14px;bottom:calc(82px + env(safe-area-inset-bottom));padding:7px 11px 7px 7px}.google-float-icon{width:38px;height:38px}.google-float strong{font-size:.72rem}.google-float small{font-size:.65rem}.wa-float{bottom:calc(14px + env(safe-area-inset-bottom))}}
+
+/* GitHub Pages approval-only marker. */
+.preview-notice{position:sticky;top:0;z-index:100;display:flex;gap:12px;justify-content:center;align-items:center;padding:9px 18px;background:#173b58;color:#fff;font-size:.82rem;text-align:center}.preview-notice strong{color:#f5b724}.preview-notice span{opacity:.96}@media(max-width:640px){.preview-notice{align-items:flex-start;flex-direction:column;gap:1px;text-align:left;padding:8px 16px;font-size:.75rem}.site-header{top:auto}}@media(max-width:480px){.wa-float-label,.google-float>span:last-child{display:none}.wa-float{right:14px}.wa-float-icon,.google-float-icon{width:52px;height:52px}.google-float{right:16px;padding:5px;border-radius:50%}}
