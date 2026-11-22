@@ -117,6 +117,8 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:900}
 /* Sobre */
 .about{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
 .about-art{position:relative;padding-bottom:clamp(135px,40vw,205px)}
+.ambiente-grid{grid-template-columns:.9fr 1.1fr}
+.ambiente-grid .about-art{padding-bottom:0}
 .about-card{background:linear-gradient(150deg,#fff,#f1f8fe);border:1px solid var(--line);border-radius:36px;padding:34px;box-shadow:var(--shadow);max-width:420px}
 .about-card img{width:100%}
 .about-kids{position:absolute;right:0;bottom:0;width:min(50%,230px);filter:drop-shadow(0 10px 14px rgba(29,50,72,.2))}
@@ -270,6 +272,8 @@ a.contact-item:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
   .trust li:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .about{gap:40px}
   .about-art{max-width:460px}
+  .ambiente-grid{grid-template-columns:1fr}
+  .ambiente-grid .about-art{max-width:620px;width:100%;margin-inline:auto}
   .how-art{min-height:380px;order:-1}
   .extra{grid-template-columns:1fr}
   .section{padding:72px 0}
